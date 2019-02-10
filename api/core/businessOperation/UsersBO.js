@@ -30,7 +30,7 @@ class UsersBO {
   async getUsers() {
     logger.debug('UsersBO.getUsers');
     const criteria = {
-      userUid: 'e73a3420-2d53-11e9-b210-d663bd873d93',
+      // userUid: 'e73a3420-2d53-11e9-b210-d663bd873d93',
     };
     const data = await this.usersRepository.getUsers(criteria, this.options);
 

@@ -4,7 +4,7 @@ module.exports = {
     dialect: 'postgres',
     name: 'devconnector',
     host: process.env.POSTGRES_DEVCONNECTOR_HOST || 'localhost',
-    username: process.env.POSTGRES_DEVCONNECTOR_USER || 'postgres',
+    username: process.env.POSTGRES_DEVCONNECTOR_USER || 'bduser',
     password: process.env.POSTGRES_DEVCONNECTOR_PASSWORD || 'bdpass',
     database: process.env.POSTGRES_DEVCONNECTOR_DATABASE || 'bdschema',
     port: process.env.POSTGRES_PORT || 5432,
@@ -13,7 +13,7 @@ module.exports = {
       max: process.env.POSTGRES_MAX_POOL || 50,
       idle: 10000,
     },
-    logging: true,
+    logging: console.log, //eslint-disable-line
     timezone: 'America/Sao_Paulo',
   },
   externals: {

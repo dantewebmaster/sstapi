@@ -13,7 +13,7 @@ module.exports = {
       max: process.env.POSTGRES_MAX_POOL || 50,
       idle: 10000,
     },
-    logging: true,
+    logging: console.log, //eslint-disable-line
     timezone: 'America/Sao_Paulo',
   },
   externals: {

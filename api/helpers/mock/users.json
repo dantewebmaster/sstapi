@@ -1,0 +1,16 @@
+[
+  {
+    "userUid": "fc331b79-13a2-44e4-8c41-65a5a1393f9b",
+    "userName": "Dante W. Anjos",
+    "createdAt": "2013-12-21T00:00:00.000Z",
+    "lastUpdatedAt": "2017-01-20T00:00:00.000Z",
+    "mail": "dante.w@mail.com"
+  },
+  {
+    "userUid": "fc331b79-13a2-44e4-8c41-65a5a1393df",
+    "userName": "Alicia Y. Beth",
+    "createdAt": "2018-12-21T00:00:00.000Z",
+    "lastUpdatedAt": "2019-01-20T00:00:00.000Z",
+    "mail": "a.beth@claymre.com"
+  }
+]

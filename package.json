@@ -1,0 +1,47 @@
+{
+  "name": "sstapi",
+  "version": "1.0.0",
+  "private": true,
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "cors": "^2.8.4",
+    "express": "^4.12.3",
+    "jsonwebtoken": "^8.3.0",
+    "axios": "^0.18.0",
+    "sequelize": "^4.33.4",
+    "swagger-tools": "^0.10.3",
+    "uuid": "^3.2.1",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "npm-run-all": "^4.1.1",
+    "pre-git": "^3.17.1"
+  },
+  "scripts": {
+    "start": "npm run lint && nodemon app.js --delay 2",
+    "lint": "eslint ."
+  },
+  "config": {
+    "pre-git": {
+      "enabled": true,
+      "pre-commit": [
+        "node ./pre-commit.js",
+        "git add package.json"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dantewebmaster/sstapi"
+  },
+  "release": {
+    "analyzeCommits": "simple-commit-message"
+  },
+  "api-version": "becd7d90-2d5c-11e9-b368-f9b5e70ce432"
+}

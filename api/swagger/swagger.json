@@ -1,0 +1,186 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "API name"
+  },
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Tag description"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "parameters": {
+    "appToken": {
+      "name": "appToken",
+      "in": "header",
+      "description": "Application Token",
+      "required": true,
+      "type": "string"
+    },
+    "language": {
+      "name": "language",
+      "in": "header",
+      "description": "Language as defined by ISO-6391.",
+      "type": "string",
+      "required": false,
+      "default": "pt-BR"
+    },
+    "timeZone": {
+      "name": "timeZone",
+      "in": "header",
+      "description": "Time Zone as defined by UTC offset",
+      "required": false,
+      "type": "string",
+      "default": "America/Sao Paulo"
+    },
+    "uuid": {
+      "name": "uuid",
+      "in": "path",
+      "description": "Entity unique identifier",
+      "type": "string",
+      "format": "uuid",
+      "required": true
+    },
+    "_limit": {
+      "name": "_limit",
+      "in": "query",
+      "description": "Defines the limit of the returned list",
+      "type": "string",
+      "required": false,
+      "default": 200
+    },
+    "_offset": {
+      "name": "_offset",
+      "in": "query",
+      "description": "Current number of the pagination",
+      "type": "string",
+      "required": false,
+      "default": 0
+    }
+  },
+  "paths": {
+    "/users": {
+      "x-swagger-router-controller": "usersController",
+      "get": {
+        "summary": "Get list of Users.",
+        "description": "Get the full list of Users.",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "getUsers",
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "appToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/swagger": {
+      "x-swagger-pipe": "swagger_raw"
+    }
+  },
+  "securityDefinitions": {
+    "appToken": {
+      "type": "apiKey",
+      "name": "appToken",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "userUid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "User unique identifier."
+        },
+        "name": {
+          "type": "string",
+          "description": "User name."
+        }
+      }
+    },
+    "ErrorResponse": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-item",
+            "description": "Date and time of the error"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "details": {
+            "type": "string",
+            "description": "Details of the error"
+          }
+        }
+      }
+    }
+  }
+}

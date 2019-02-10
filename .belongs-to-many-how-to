@@ -1,0 +1,32 @@
+# Exemplo de utilização de associate
+* When to Use
+  Sempre que tiver uma tabela de ligação (N:N)
+
+* Declaring
+  Faça isso nas duas tabelas
+
+Na TabelaA
+  TabelaA.associate = (models) => {
+    TabelaA.belongsToMany(models.TabelaB, {
+      through: models.TabelaLigacao,
+      primaryKey: false,
+      foreignKey:'ChaveTabelaA'
+    });
+
+Na TabelaB
+  TabelaB.associate = (models) => {
+    TabelaB.belongsToMany(models.TabelaA, {
+      through: models.TabelaLigacao,
+      primaryKey: false,
+      foreignKey:'ChaveTabelaB'
+    });
+
+* Using
+  return TabelaA.findAll({
+      include: {
+          required:true,
+          model:TabelaB,
+          where: {Campo: 'Valor'}
+      }
+  });
+
